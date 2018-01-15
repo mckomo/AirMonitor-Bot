@@ -3,6 +3,6 @@ require 'rom/sql/rake_task'
 
 namespace :db do
   task :setup do
-    ROM.container(:sql, 'sqlite://db/development.db')
+    ROM.container(:sql, ENV['DATABASE_URL'] || 'postgres://localhost/bot')
   end
 end

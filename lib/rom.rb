@@ -1,6 +1,6 @@
 require 'rom-sql'
 
-CONTAINER = ROM.container(:sql, 'sqlite://db/development.db') do |config|
+CONTAINER = ROM.container(:sql, ENV['DATABASE_URL'] || 'postgres://localhost/bot') do |config|
   config.relation(:users) do
     schema(infer: true)
   end
